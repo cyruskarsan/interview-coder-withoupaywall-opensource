@@ -776,7 +776,7 @@ Your solution should be efficient, well-commented, and handle edge cases.
         const solutionResponse = await this.openaiClient.chat.completions.create({
           model: config.solutionModel || "gpt-4o",
           messages: [
-            { role: "system", content: "You are an expert coding interview assistant. Provide clear, optimal solutions with detailed explanations. Solve the problem with the most intuitive algorithm." },
+            { role: "system", content: "You are an expert coding interview assistant. Provide clear, intuitive solutions with detailed explanations." },
             { role: "user", content: promptText }
           ],
           max_completion_tokens: 4000,
