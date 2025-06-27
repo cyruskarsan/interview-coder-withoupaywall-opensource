@@ -83,7 +83,7 @@ export class ProcessingHelper {
           });
           this.geminiApiKey = null;
           this.anthropicClient = null;
-          console.log("OpenAI client initialized successfully");
+          console.log("OpenAI CLIENT INITIALIZED SUCCESSFULLY");
         } else {
           this.openaiClient = null;
           this.geminiApiKey = null;
@@ -498,8 +498,7 @@ export class ProcessingHelper {
         const extractionResponse = await this.openaiClient.chat.completions.create({
           model: config.extractionModel || "gpt-4o",
           messages: messages,
-          max_tokens: 4000,
-          temperature: 0.2
+          max_completion_tokens: 4000,
         });
 
         // Parse the response
@@ -777,11 +776,10 @@ Your solution should be efficient, well-commented, and handle edge cases.
         const solutionResponse = await this.openaiClient.chat.completions.create({
           model: config.solutionModel || "gpt-4o",
           messages: [
-            { role: "system", content: "You are an expert coding interview assistant. Provide clear, optimal solutions with detailed explanations." },
+            { role: "system", content: "You are an expert coding interview assistant. Provide clear, optimal solutions with detailed explanations. Solve the problem with the most intuitive algorithm." },
             { role: "user", content: promptText }
           ],
-          max_tokens: 4000,
-          temperature: 0.2
+          max_completion_tokens: 4000,
         });
 
         responseContent = solutionResponse.choices[0].message.content;
@@ -1069,8 +1067,7 @@ If you include code examples, use proper markdown code blocks with language spec
         const debugResponse = await this.openaiClient.chat.completions.create({
           model: config.debuggingModel || "gpt-4o",
           messages: messages,
-          max_tokens: 4000,
-          temperature: 0.2
+          max_completion_tokens: 4000,
         });
         
         debugContent = debugResponse.choices[0].message.content;

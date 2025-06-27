@@ -61,7 +61,7 @@ export class ConfigHelper extends EventEmitter {
   private sanitizeModelSelection(model: string, provider: "openai" | "gemini" | "anthropic"): string {
     if (provider === "openai") {
       // Only allow gpt-4o and gpt-4o-mini for OpenAI
-      const allowedModels = ['gpt-4o', 'gpt-4o-mini'];
+      const allowedModels = ['o4-mini-2025-04-16','gpt-4o', 'gpt-4o-mini'];
       if (!allowedModels.includes(model)) {
         console.warn(`Invalid OpenAI model specified: ${model}. Using default model: gpt-4o`);
         return 'gpt-4o';
@@ -77,7 +77,7 @@ export class ConfigHelper extends EventEmitter {
       return model;
     }  else if (provider === "anthropic") {
       // Only allow Claude models
-      const allowedModels = ['claude-3-7-sonnet-20250219', 'claude-3-5-sonnet-20241022', 'claude-3-opus-20240229'];
+      const allowedModels = ['claude-sonnet-4-20250514','claude-3-7-sonnet-20250219', 'claude-3-5-sonnet-20241022', 'claude-3-opus-20240229'];
       if (!allowedModels.includes(model)) {
         console.warn(`Invalid Anthropic model specified: ${model}. Using default model: claude-3-7-sonnet-20250219`);
         return 'claude-3-7-sonnet-20250219';
